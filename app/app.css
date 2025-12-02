@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-dark-200: #475467;
+  --color-light-blue-100: #c1d3f81a;
+  --color-light-blue-200: #a7bff14d;
+
+  --color-badge-green: #d5faf1;
+  --color-badge-red: #f9e3e2;
+  --color-badge-yellow: #fceed8;
+
+  --color-badge-green-text: #254d4a;
+  --color-badge-red-text: #752522;
+  --color-badge-yellow-text: #73321b;
+}
+
+html,
+body {
+  @apply min-h-screen font-sans text-[#0f172a];
+  background: radial-gradient(circle at top, #eef2ff 0%, #e0e1ff 35%, #f7f2ff 60%, #ffffff 100%);
+}
+
+main {
+  @apply min-h-screen pt-10 px-6 pb-16;
+}
+h1 {
+  @apply text-6xl  text-gradient leading-tight tracking-[-2px] font-semibold;
+}
+
+h2 {
+  @apply text-3xl text-dark-200;
+}
+
+label {
+  @apply text-dark-200;
+}
+input {
+  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white;
+}
+
+textarea {
+  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white;
+}
+
+form {
+  @apply flex flex-col items-start gap-8 w-full;
+}
+
+@layer components {
+  .page {
+    @apply flex flex-col gap-12 items-center w-full;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#5b7cfa] via-[#a855f7] to-[#f97316];
+  }
+
+  .gradient-border {
+    @apply p-3 rounded-3xl border border-white/70 bg-white/60 shadow-inner;
+  }
+
+  .glass-panel {
+    @apply rounded-3xl border border-white/70 bg-white/80 shadow-xl p-8 backdrop-blur-2xl;
+  }
+
+  .primary-button {
+    @apply primary-gradient inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 cursor-pointer font-semibold text-base text-white transition-all duration-200 shadow-lg w-fit;
+  }
+  .primary-button:hover {
+    @apply primary-gradient-hover -translate-y-px;
+  }
+
+  .secondary-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-indigo-200/70 px-6 py-3 font-semibold text-base text-indigo-700 bg-white/70 shadow-sm transition-all duration-200;
+  }
+  .secondary-button:hover {
+    @apply border-indigo-400 text-indigo-900 shadow-md -translate-y-px;
+  }
+
+  .navbar {
+    @apply flex flex-col md:flex-row gap-3 md:gap-0 justify-between items-start md:items-center bg-white/80 rounded-3xl p-6 md:px-10 w-full max-w-[1200px] mx-auto border border-white/60 shadow-xl backdrop-blur-2xl;
+  }
+  .nav-brand {
+    @apply flex flex-col gap-1;
+  }
+  .nav-tagline {
+    @apply text-sm text-slate-500;
+    letter-spacing: 0.08em;
+  }
+  .nav-actions {
+    @apply flex flex-row gap-3 items-center w-full md:w-auto;
+  }
+  .nav-cta {
+    @apply w-full md:w-auto;
+  }
+
+  .hero {
+    @apply w-full max-w-[1200px] mx-auto;
+  }
+  .hero-grid {
+    @apply grid lg:grid-cols-2 gap-10 items-center;
+  }
+  .hero-copy {
+    @apply flex flex-col gap-6;
+  }
+  .hero-pill {
+    @apply uppercase text-xs font-semibold text-indigo-700 bg-indigo-50/80 px-4 py-2 rounded-full w-fit;
+    letter-spacing: 0.35em;
+  }
+  .cta-group {
+    @apply flex flex-col sm:flex-row gap-4 items-start;
+  }
+  .hero-stats {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+  }
+  .stat-card {
+    @apply p-6 rounded-2xl bg-white/70 shadow-lg;
+  }
+  .stat-label {
+    @apply text-xs font-semibold uppercase text-slate-500;
+    letter-spacing: 0.2em;
+  }
+  .stat-value {
+    @apply text-4xl font-bold text-slate-900;
+  }
+  .stat-helper {
+    @apply text-sm text-slate-500 mt-1;
+  }
+  .hero-visual {
+    @apply w-full;
+  }
+  .hero-card {
+    @apply flex flex-col gap-6;
+  }
+  .hero-checklist {
+    @apply flex flex-col gap-4 mt-2;
+  }
+  .hero-checklist li {
+    @apply flex flex-row gap-4 items-start;
+  }
+  .check-icon {
+    @apply w-10 h-10 rounded-2xl bg-indigo-50 flex items-center justify-center;
+  }
+  .hero-card-footer {
+    @apply rounded-2xl border border-indigo-100/70 bg-indigo-50/60 px-4 py-3;
+  }
+
+  .main-section {
+    @apply flex flex-col items-center gap-8 pt-8 w-full max-w-[1200px] mx-auto;
+  }
+  .section-heading {
+    @apply flex flex-col md:flex-row gap-6 md:items-center justify-between w-full;
+  }
+  .section-title {
+    @apply text-4xl font-semibold text-slate-900;
+  }
+  .subheading {
+    @apply text-lg text-slate-500;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase text-slate-500;
+    letter-spacing: 0.3em;
+  }
+
+  .resumes-section {
+    @apply grid gap-6 w-full grid-cols-1 md:grid-cols-2 xl:grid-cols-3;
+  }
+  .resume-card {
+    @apply flex flex-col gap-6 bg-white/80 rounded-3xl p-6 border border-white/70 shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl;
+  }
+  .resume-card-header {
+    @apply flex flex-row gap-4 justify-between items-start;
+  }
+  .resume-card__meta {
+    @apply flex flex-wrap gap-3;
+  }
+  .pill {
+    @apply inline-flex items-center px-4 py-1 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700;
+  }
+  .pill--ghost {
+    @apply bg-slate-100 text-slate-600;
+  }
+  .resume-card__preview {
+    @apply overflow-hidden rounded-2xl;
+  }
+  .resume-card__foot {
+    @apply flex flex-row items-center justify-between;
+  }
+
+  .resume-nav {
+    @apply flex flex-row justify-between items-center p-4 border-b border-gray-200;
+  }
+  .resume-summary {
+    @apply flex flex-row items-center justify-center p-4 gap-4;
+  }
+  .resume-summary .category {
+    @apply flex flex-row gap-2 items-center bg-gray-50 rounded-2xl p-4 w-full justify-between;
+  }
+  .feedback-section {
+    @apply flex flex-col gap-8 w-1/2 px-8 max-lg:w-full py-6;
+  }
+
+  .back-button {
+    @apply flex flex-row items-center gap-2 border border-gray-200 rounded-lg p-2 shadow-sm;
+  }
+  .auth-button {
+    @apply primary-gradient rounded-full py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-3xl font-semibold text-white;
+  }
+
+  .score-badge {
+    @apply flex flex-row items-center justify-center py-1 px-2 gap-4 rounded-[96px];
+  }
+
+  .upload-section {
+    @apply w-full max-w-[1200px] mx-auto;
+  }
+  .upload-grid {
+    @apply grid lg:grid-cols-[1fr_1fr] gap-8;
+  }
+  .upload-info {
+    @apply flex flex-col gap-6;
+  }
+  .upload-card {
+    @apply flex flex-col gap-4;
+  }
+  .upload-checklist {
+    @apply flex flex-col gap-3;
+  }
+  .upload-checklist li {
+    @apply flex flex-row items-center gap-3 text-slate-600;
+  }
+  .upload-checklist img {
+    @apply w-4 h-4;
+  }
+  .processing-state {
+    @apply flex flex-col gap-4 items-center text-center;
+  }
+
+  .form-div {
+    @apply flex flex-col gap-2 w-full items-start;
+  }
+  .uplader-drag-area {
+    @apply relative p-8 text-center transition-all duration-700 cursor-pointer bg-white rounded-2xl min-h-[208px];
+  }
+  .uploader-selected-file {
+    @apply flex items-center justify-between p-3 bg-gray-50 rounded-2xl;
+  }
+}
+
+@utility bg-gradient {
+  background: linear-gradient(to bottom, #f0f4ff 60%, #fa7185cc);
+}
+
+@utility text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
+}
+
+@utility gradient-hover {
+  @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200;
+}
+
+@utility primary-gradient {
+  background: linear-gradient(120deg, #6366f1 0%, #8b5cf6 45%, #ec4899 100%);
+  box-shadow: 0 25px 45px rgba(99, 102, 241, 0.25);
+}
+
+@utility primary-gradient-hover {
+  background: linear-gradient(120deg, #4f46e5 0%, #7c3aed 45%, #d946ef 100%);
+}
+
+@utility inset-shadow {
+  box-shadow: inset 0 0 12px 0 rgba(36, 99, 235, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
