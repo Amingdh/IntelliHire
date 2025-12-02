@@ -7,7 +7,7 @@ import {useEffect, useMemo, useState} from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Resumind" },
+    { title: "IntelliHire" },
     { name: "description", content: "Smart feedback for your dream job!" },
   ];
 }

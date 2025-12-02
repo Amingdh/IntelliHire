@@ -150,7 +150,7 @@ form {
   }
 
   .main-section {
-    @apply flex flex-col items-center gap-8 pt-8 w-full max-w-[1200px] mx-auto;
+    @apply flex flex-col items-center gap-8 pt-8 w-full max-w-[1200px] mx-auto rounded-3xl border border-white/70 bg-white/80 shadow-xl shadow-indigo-100/70 px-6 pb-10;
   }
   .section-heading {
     @apply flex flex-col md:flex-row gap-6 md:items-center justify-between w-full;
@@ -216,7 +216,7 @@ form {
   }
 
   .upload-section {
-    @apply w-full max-w-[1200px] mx-auto;
+    @apply w-full max-w-[1200px] mx-auto rounded-3xl border border-white/70 bg-white/80 shadow-xl shadow-indigo-100/70 px-6 pb-10;
   }
   .upload-grid {
     @apply grid lg:grid-cols-[1fr_1fr] gap-8;
@@ -252,11 +252,11 @@ form {
 }
 
 @utility bg-gradient {
-  background: linear-gradient(to bottom, #f0f4ff 60%, #fa7185cc);
+  background: radial-gradient(circle at top, #e0f2fe 0%, #e3f2ff 40%, #eef2ff 70%, #ffffff 100%);
 }
 
 @utility text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#5b7cfa] via-[#a855f7] to-[#f97316];
 }
 
 @utility gradient-hover {
