@@ -5,6 +5,8 @@ export const resumes: Resume[] = [
         jobTitle: "Frontend Developer",
         imagePath: "/images/resume_01.png",
         resumePath: "/resumes/resume-1.pdf",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
         feedback: {
             overallScore: 85,
             ATS: {
@@ -35,6 +37,8 @@ export const resumes: Resume[] = [
         jobTitle: "Cloud Engineer",
         imagePath: "/images/resume_02.png",
         resumePath: "/resumes/resume-2.pdf",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
         feedback: {
             overallScore: 55,
             ATS: {
@@ -65,6 +69,8 @@ export const resumes: Resume[] = [
         jobTitle: "iOS Developer",
         imagePath: "/images/resume_03.png",
         resumePath: "/resumes/resume-3.pdf",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
         feedback: {
             overallScore: 75,
             ATS: {
@@ -95,6 +101,8 @@ export const resumes: Resume[] = [
         jobTitle: "Frontend Developer",
         imagePath: "/images/resume_01.png",
         resumePath: "/resumes/resume-1.pdf",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
         feedback: {
             overallScore: 85,
             ATS: {
@@ -125,6 +133,8 @@ export const resumes: Resume[] = [
         jobTitle: "Cloud Engineer",
         imagePath: "/images/resume_02.png",
         resumePath: "/resumes/resume-2.pdf",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
         feedback: {
             overallScore: 55,
             ATS: {
@@ -155,6 +165,8 @@ export const resumes: Resume[] = [
         jobTitle: "iOS Developer",
         imagePath: "/images/resume_03.png",
         resumePath: "/resumes/resume-3.pdf",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
         feedback: {
             overallScore: 75,
             ATS: {
@@ -245,3 +257,73 @@ export const prepareInstructions = ({jobTitle, jobDescription}: { jobTitle: stri
       ${AIResponseFormat}
       Return the analysis as an JSON object, without any other text and without the backticks.
       Do not include any other text or comments.`;
+
+export const prepareCandidateStrengthsInstructions = ({jobTitle, jobDescription}: { jobTitle: string; jobDescription: string; }) =>
+    `You are an expert HR recruiter analyzing a candidate's resume for a recruitment decision.
+      Analyze this candidate's resume and identify their key strengths that make them a strong fit for this position.
+      The job title is: ${jobTitle}
+      The job description is: ${jobDescription}
+      
+      Provide a comprehensive analysis focusing on:
+      1. Technical Skills & Expertise - What technical skills and tools do they excel at?
+      2. Experience & Achievements - What notable achievements and relevant experience do they have?
+      3. Education & Certifications - What educational background and certifications do they possess?
+      4. Soft Skills & Leadership - What soft skills, leadership qualities, or team collaboration abilities do they demonstrate?
+      5. Cultural Fit - How well do their values, work style, and career goals align with the role?
+      
+      For each category, provide:
+      - A score from 0-100 indicating how strong they are in that area
+      - 3-5 specific bullet points highlighting their strengths
+      
+      Return the analysis in the following JSON format:
+      {
+        "strengths": [
+          {
+            "category": "Technical Skills & Expertise",
+            "score": 85,
+            "points": [
+              "5+ years of experience with React and TypeScript",
+              "Strong background in cloud infrastructure (AWS, Azure)",
+              "Proven track record in building scalable applications"
+            ]
+          },
+          {
+            "category": "Experience & Achievements",
+            "score": 90,
+            "points": [
+              "Led a team of 5 developers to deliver a major product launch",
+              "Reduced application load time by 40% through optimization",
+              "Managed projects worth $2M+ in annual revenue"
+            ]
+          },
+          {
+            "category": "Education & Certifications",
+            "score": 75,
+            "points": [
+              "Bachelor's degree in Computer Science from top university",
+              "AWS Certified Solutions Architect",
+              "Completed advanced courses in machine learning"
+            ]
+          },
+          {
+            "category": "Soft Skills & Leadership",
+            "score": 80,
+            "points": [
+              "Excellent communication skills demonstrated through client presentations",
+              "Strong problem-solving abilities shown in complex project scenarios",
+              "Proven ability to mentor junior developers"
+            ]
+          },
+          {
+            "category": "Cultural Fit",
+            "score": 85,
+            "points": [
+              "Values align with company's innovation-focused culture",
+              "Demonstrates growth mindset and continuous learning",
+              "Shows commitment to collaborative work environment"
+            ]
+          }
+        ]
+      }
+      
+      Return ONLY the JSON object, without any other text, markdown formatting, or backticks.`;

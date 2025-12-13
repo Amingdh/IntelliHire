@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import {usePuterStore} from "~/lib/puter";
 import {useEffect} from "react";
+import {initScrollAnimations} from "~/lib/animations";
 
 export const links: Route.LinksFunction = () => [
   { rel: "icon", href: "/favicon.ico" },
@@ -32,6 +33,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     init()
   }, [init]);
+
+  useEffect(() => {
+    // Initialize scroll animations after component mounts
+    const cleanup = initScrollAnimations();
+    return cleanup;
+  }, []);
 
   return (
     <html lang="en">

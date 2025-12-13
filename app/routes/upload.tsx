@@ -18,7 +18,7 @@ const Upload = () => {
         setFile(file)
     }
 
-    const handleAnalyze = async ({ companyName, jobTitle, jobDescription, file }: { companyName: string, jobTitle: string, jobDescription: string, file: File  }) => {
+    const handleAnalyze = async ({ companyName, jobTitle, jobDescription, file, candidateName, candidateEmail }: { companyName: string, jobTitle: string, jobDescription: string, file: File, candidateName?: string, candidateEmail?: string  }) => {
         setIsProcessing(true);
 
         setStatusText('Uploading the file...');
@@ -35,12 +35,17 @@ const Upload = () => {
 
         setStatusText('Preparing data...');
         const uuid = generateUUID();
+        const now = new Date().toISOString();
         const data = {
             id: uuid,
             resumePath: uploadedFile.path,
             imagePath: uploadedImage.path,
             companyName, jobTitle, jobDescription,
+            candidateName: candidateName || undefined,
+            candidateEmail: candidateEmail || undefined,
             feedback: '',
+            createdAt: now,
+            updatedAt: now,
         }
         await kv.set(`resume:${uuid}`, JSON.stringify(data));
 
@@ -67,6 +72,7 @@ const Upload = () => {
         parsedFeedback.ATS.score = normalizeAtsScore(parsedFeedback.ATS.score, supportingScores as number[]);
 
         data.feedback = parsedFeedback;
+        data.updatedAt = new Date().toISOString();
         await kv.set(`resume:${uuid}`, JSON.stringify(data));
         setStatusText('Analysis complete, redirecting...');
         console.log(data);
@@ -79,13 +85,15 @@ const Upload = () => {
         if(!form) return;
         const formData = new FormData(form);
 
+        const candidateName = formData.get('candidate-name') as string;
+        const candidateEmail = formData.get('candidate-email') as string;
         const companyName = formData.get('company-name') as string;
         const jobTitle = formData.get('job-title') as string;
         const jobDescription = formData.get('job-description') as string;
 
         if(!file) return;
 
-        handleAnalyze({ companyName, jobTitle, jobDescription, file });
+        handleAnalyze({ companyName, jobTitle, jobDescription, file, candidateName, candidateEmail });
     }
 
     return (
@@ -124,6 +132,14 @@ const Upload = () => {
                             </div>
                         ) : (
                             <form id="upload-form" onSubmit={handleSubmit} className="flex flex-col gap-4 mt-4">
+                                <div className="form-div">
+                                    <label htmlFor="candidate-name">Candidate Name (Optional)</label>
+                                    <input type="text" name="candidate-name" placeholder="Candidate Name" id="candidate-name" />
+                                </div>
+                                <div className="form-div">
+                                    <label htmlFor="candidate-email">Candidate Email (Optional)</label>
+                                    <input type="email" name="candidate-email" placeholder="candidate@email.com" id="candidate-email" />
+                                </div>
                                 <div className="form-div">
                                     <label htmlFor="company-name">Company Name</label>
                                     <input type="text" name="company-name" placeholder="Company Name" id="company-name" />

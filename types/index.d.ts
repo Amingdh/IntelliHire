@@ -2,9 +2,22 @@ interface Resume {
     id: string;
     companyName?: string;
     jobTitle?: string;
+    jobDescription?: string;
     imagePath: string;
     resumePath: string;
     feedback: Feedback;
+    createdAt: string;
+    updatedAt: string;
+    isSelected?: boolean;
+    candidateName?: string;
+    candidateEmail?: string;
+    strengths?: CandidateStrength[];
+}
+
+interface CandidateStrength {
+    category: string;
+    points: string[];
+    score: number;
 }
 
 interface Feedback {

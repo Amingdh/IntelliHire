@@ -8,6 +8,9 @@ const Navbar = () => {
                 <span className="nav-tagline">AI Resume Intelligence</span>
             </Link>
             <div className="nav-actions">
+                <Link to="/candidates" className="secondary-button hidden md:inline-flex">
+                    Top Candidates
+                </Link>
                 <a href="#insights" className="secondary-button hidden md:inline-flex">
                     View Insights
                 </a>
